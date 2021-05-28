@@ -6,7 +6,18 @@ import java.lang.reflect.Method;
 
 public class ReflectSample {
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException {
+        //类会进行初始化,执行静态代码
         Class robotClass = Class.forName("com.yyk.iv.reflect.Robot");
+
+        //不会初始化
+        Class robotClass1 = Robot.class;//不会初始化
+
+        //不会初始化化
+        Class robotClass2 = Robot.class.getClassLoader().loadClass("com.yyk.iv.reflect.Robot");
+
+        Robot r = new Robot();
+        Class robotClass3 = r.getClass();
+
         Robot robot= (Robot) robotClass.newInstance();
         //一切皆为对象
         //getDeclaredMethod可获得所有方法包括私有方法,不能获得父类方法
