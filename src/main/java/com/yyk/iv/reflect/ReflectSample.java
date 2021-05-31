@@ -27,12 +27,12 @@ public class ReflectSample {
         Object str = getHello.invoke(robot,"Bob");
         //只能获得public方法,但是可获得父类public方法
         Method sayHi = robotClass.getMethod("sayHi", String.class);
-        sayHi.invoke(robot,"Welcom");
+        sayHi.invoke(robot,"Welcome");
 
         //获取属性
         Field name = robotClass.getDeclaredField("name");
         name.setAccessible(true);
         name.set(robot,"Alice");
-        sayHi.invoke(robot,"Welcom");
+        sayHi.invoke(robot,"Welcome");
     }
 }
